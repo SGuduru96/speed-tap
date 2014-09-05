@@ -67,8 +67,10 @@
     //stores the position of the tile
     CGPoint tilePos = {0, _screenSize.height + _screenSize.width/4 + 1};
     for(int i = 0; i < numOfTiles; i++){
+        
         int tileType = (arc4random() % 3) + 1;
         Tile *tile;
+        
         if(tileType == 1){
             tile = [[Tile alloc] initWithType:@"one" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
             totalTaps += 1;
@@ -79,11 +81,17 @@
             tile = [[Tile alloc] initWithType:@"three" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
             totalTaps += 3;
         }
+        
         tile.position = tilePos;
+        
         [self addChild:tile];
+        
         [_listOfTiles addObject:tile];
+        
         tilePos.x += _screenSize.width/4 + 1;
     }
+    
+    //calls create row of tiles again after 1.5 seconds. The repeats is set to no because this is a "recursive method"
     [NSTimer scheduledTimerWithTimeInterval:1.5
                                      target:self
                                    selector:@selector(createRowOfTiles)

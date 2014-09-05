@@ -12,6 +12,7 @@
     //the ammount of times the tile can be tapped before being destroyd
     int _life;
     CCLabelTTF *_myLabel;
+    NSString *_shape;
     CCColor *_myColor;
 }
 
@@ -56,7 +57,16 @@
     if(_life == 0){
         [self removeFromParent];
     }
+    
+    //update label with new number
     _myLabel.string = [NSString stringWithFormat:@"%d", _life];
+    
+    //update color of tile depending on its "_life"
+    if(_life == 2){
+        _myColor = [[CCColor alloc]initWithRed:.22 green:.79 blue:.45 alpha:1];
+    }else if(_life == 1){
+        _myColor = [[CCColor alloc]initWithRed:.23 green:.6 blue:.85 alpha:1];
+    }
 }
 
 @end
