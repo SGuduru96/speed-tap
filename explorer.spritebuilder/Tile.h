@@ -10,6 +10,6 @@
 
 @interface Tile : CCNodeColor
 
--(id)initWithColor:(CCColor*)color width:(GLfloat)w height:(GLfloat)h number:(int)num;
+-(id)initWithType:(NSString*)type width:(GLfloat)w height:(GLfloat)h;
 
 @end
