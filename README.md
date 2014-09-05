@@ -2,7 +2,7 @@ speed-tap
 =========
 DONE
 ====
--Create Tiles (Check)
+-Create Tiles (Check)/r/n
 -Make Tiles tapable (Check)
 -Display a number of Tiles that represents how many more times it needs to be tapped (Check)
 -Have multiple types of Tiles (Check)
