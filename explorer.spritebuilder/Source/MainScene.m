@@ -4,7 +4,7 @@
 //
 //  Created by Viktor on 10/10/13.
 //  Copyright (c) 2013 Apportable. All rights reserved.
-//
+//master
 
 #import "MainScene.h"
 #import "Tile.h"
@@ -89,7 +89,6 @@
                                    selector:@selector(createRowOfTiles)
                                    userInfo:nil
                                     repeats:NO];
-
 }
 
 
