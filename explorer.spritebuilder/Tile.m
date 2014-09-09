@@ -14,31 +14,15 @@
     CCLabelTTF *_myLabel;
     NSString *_shape;
     CCColor *_myColor;
+    CGSize _tileSize;
 }
 
--(id)initWithType:(NSString *)type width:(GLfloat)w height:(GLfloat)h{
-    int num;
-    if([type isEqual:@"three"]){
-        num = 3;
-        
-        //init _myColor as red
-        _myColor = [[CCColor alloc]initWithRed:.9 green:.3 blue:.26 alpha:1];
-    }else if([type isEqual:@"two"]){
-        num = 2;
-        
-        //init _myColor as green
-        _myColor = [[CCColor alloc]initWithRed:.22 green:.79 blue:.45 alpha:1];
-    }else if([type isEqual:@"one"]){
-        num = 1;
-        
-        //init _myColor as blue
-        _myColor = [[CCColor alloc]initWithRed:.23 green:.6 blue:.85 alpha:1];
-    }
-    self = [self initWithColor:_myColor width:w height:h];
-    
+-(id)initWithShape:(NSString *)shape color:(NSString *)color width:(GLfloat)w height:(GLfloat)h{
+    _myColor = [[CCColor alloc]initWithRed:.9 green:.3 blue:.26 alpha:0];
+    self = [super initWithColor:_myColor width:w height:h];
     if(self){
-        _life = num;
-        
+        _shape = shape;
+        _tileSize = [self boundingBox].size;
     }
     return self;
 }
@@ -46,27 +30,14 @@
 -(void)onEnter{
     [super onEnter];
     self.userInteractionEnabled = YES;
-    //_myLabel.string = [NSString stringWithFormat:@"%d", _life];
-    _myLabel = [[CCLabelTTF alloc] initWithString:[NSString stringWithFormat:@"%d", _life] fontName:@"Helvetica" fontSize:60];
-    [_myLabel setPosition:ccp([self boundingBox].size.width/2, [self boundingBox].size.height/2)];
-    [self addChild:_myLabel];
+    CCNode *square = (CCNode *)[CCBReader load:@"Star.ccbi"];
+    [square setScaleX:.4];
+    [square setScaleY:.4];
+    [self addChild:square];
 }
 
 -(void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event{
-    _life = _life -= 1;
-    if(_life == 0){
-        [self removeFromParent];
-    }
-    
-    //update label with new number
-    _myLabel.string = [NSString stringWithFormat:@"%d", _life];
-    
-    //update color of tile depending on its "_life"
-    if(_life == 2){
-        _myColor = [[CCColor alloc]initWithRed:.22 green:.79 blue:.45 alpha:1];
-    }else if(_life == 1){
-        _myColor = [[CCColor alloc]initWithRed:.23 green:.6 blue:.85 alpha:1];
-    }
+    [self removeFromParent];
 }
 
 @end

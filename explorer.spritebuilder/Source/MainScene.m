@@ -43,7 +43,7 @@
     CGPoint tilePos = {0, 0};
     for(int r = 0; r < row; r++){
         for(int c = 0; c < col; c++){
-            Tile *tile = [[Tile alloc] initWithType:@"one" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
+            Tile *tile = [[Tile alloc] initWithShape:@"Square" color:@"red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
             tile.position = tilePos;
             [self addChild:tile];
             tilePos.x = tilePos.x + _screenSize.width/4 + 1;
@@ -63,24 +63,12 @@
     //randomly chooses between 1-4 tiles for the row
     int numOfTiles = (arc4random() % 4)+1;
     //used to store the number of taps to get rid of the whole row of tiles. The ideal number is 6 taps
-    int totalTaps = 0;
     //stores the position of the tile
     CGPoint tilePos = {0, _screenSize.height + _screenSize.width/4 + 1};
+    NSLog(@"important!!! %f", _screenSize.width/4);
     for(int i = 0; i < numOfTiles; i++){
         
-        int tileType = (arc4random() % 3) + 1;
-        Tile *tile;
-        
-        if(tileType == 1){
-            tile = [[Tile alloc] initWithType:@"one" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
-            totalTaps += 1;
-        }else if(tileType == 2){
-            tile = [[Tile alloc] initWithType:@"two" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
-            totalTaps += 2;
-        }else if(tileType == 3){
-            tile = [[Tile alloc] initWithType:@"three" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
-            totalTaps += 3;
-        }
+        Tile *tile = [[Tile alloc]initWithShape:@"Square" color:@"red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
         
         tile.position = tilePos;
         
