@@ -7,7 +7,10 @@
 //
 
 #import "CCNode.h"
+#import "TargetDock.h"
 
 @interface MainScene : CCNode
+
+@property (nonatomic, strong)TargetDock *TargetDock;
 
 @end

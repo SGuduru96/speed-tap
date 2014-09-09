@@ -8,6 +8,21 @@
 
 #import "MainScene.h"
 #import "Tile.h"
+//#import "TargetDock.h"
+
+//  DrawingOrder.h
+
+#ifndef DeepMine_DrawingOrder_h
+#define DeepMine_DrawingOrder_h
+
+// example for Sprite Kit, for Cocos2d simply inverse the order of the values!
+typedef NS_ENUM(NSInteger, DrawingOrder) {
+    DrawingOrderBackground,
+    DrawingOrderTiles,
+    DrawingOrderDock,
+};
+
+#endif
 
 @implementation MainScene{
     //stores the screen size of the device
@@ -15,7 +30,7 @@
     //this array hows the list of tiles
     NSMutableArray *_listOfTiles;
     
-    
+    //this is the dock which tells the player what they're hunting for
     //this is value is used to determine how many taps it should take to clear a row of tiles. This is the limit.
     int _rowTileTapLimit;
 }
@@ -26,6 +41,7 @@
     if(self){
         _rowTileTapLimit = 6;
         _listOfTiles = [[NSMutableArray alloc] init];
+        
     }
     
     return self;
@@ -36,14 +52,26 @@
     
     //get the screen size
     _screenSize = [self boundingBox].size;
+    
+    //init maintargetdock with color and size
+    self.TargetDock = [[TargetDock alloc]initWithColor:[CCColor colorWithRed:0 green:0 blue:0 alpha:1] width:_screenSize.width height:_screenSize.height/8];
+    
+    //change maintargetdocks position on screen
+    self.TargetDock.position = CGPointMake(0, _screenSize.height - [self.TargetDock boundingBox].size.height);
+    
+    //set zorder of main dock
+    self.TargetDock.zOrder = DrawingOrderDock;
+    
+    [self addChild:self.TargetDock];
     [self createRowOfTiles];
+    [self setTarget];
 }
 
 -(void)drawGridWithRow:(int)row AndCol:(int)col{
     CGPoint tilePos = {0, 0};
     for(int r = 0; r < row; r++){
         for(int c = 0; c < col; c++){
-            Tile *tile = [[Tile alloc] initWithShape:@"Square" color:@"red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
+            Tile *tile = [[Tile alloc] initWithShape:@"Square" color:@"Red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
             tile.position = tilePos;
             [self addChild:tile];
             tilePos.x = tilePos.x + _screenSize.width/4 + 1;
@@ -51,6 +79,11 @@
         tilePos.x = 0;
         tilePos.y = tilePos.y + _screenSize.width/4 + 1;
     }
+}
+
+-(void)setTarget{
+    self.TargetDock.targetShape = @"Square";
+    self.TargetDock.targetColor = @"Red";
 }
 
 /*
@@ -65,12 +98,14 @@
     //used to store the number of taps to get rid of the whole row of tiles. The ideal number is 6 taps
     //stores the position of the tile
     CGPoint tilePos = {0, _screenSize.height + _screenSize.width/4 + 1};
-    NSLog(@"important!!! %f", _screenSize.width/4);
+    //NSLog(@"important!!! %f", _screenSize.width/4);
     for(int i = 0; i < numOfTiles; i++){
         
-        Tile *tile = [[Tile alloc]initWithShape:@"Square" color:@"red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
+        Tile *tile = [[Tile alloc]initWithShape:@"Square" color:@"Red" width:_screenSize.width/4 - 1 height:_screenSize.width/4 - 1];
         
         tile.position = tilePos;
+        
+        tile.zOrder = DrawingOrderTiles;
         
         [self addChild:tile];
         

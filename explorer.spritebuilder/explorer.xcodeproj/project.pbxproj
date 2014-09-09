@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2360E2EB19B7C0AA008732D1 /* Tile.m in Sources */ = {isa = PBXBuildFile; fileRef = 2360E2EA19B7C0AA008732D1 /* Tile.m */; };
+		23DD58E219BEB86F00514172 /* TargetDock.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DD58E119BEB86F00514172 /* TargetDock.m */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
 		B71F5911188484E7003F4D28 /* iPad-old.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5907188484E7003F4D28 /* iPad-old.png */; };
 		B71F5912188484E7003F4D28 /* iPad-old@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B71F5908188484E7003F4D28 /* iPad-old@2x.png */; };
@@ -59,6 +60,8 @@
 /* Begin PBXFileReference section */
 		2360E2E919B7C0AA008732D1 /* Tile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tile.h; sourceTree = "<group>"; };
 		2360E2EA19B7C0AA008732D1 /* Tile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tile.m; sourceTree = "<group>"; };
+		23DD58E019BEB86F00514172 /* TargetDock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetDock.h; sourceTree = "<group>"; };
+		23DD58E119BEB86F00514172 /* TargetDock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetDock.m; sourceTree = "<group>"; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
 		B71F5908188484E7003F4D28 /* iPad-old@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old@2x.png"; path = "Icons/iPad-old@2x.png"; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				B737893E1807617C0076A88C /* AppDelegate.m */,
 				B7378992180767190076A88C /* MainScene.h */,
 				B7378993180767190076A88C /* MainScene.m */,
+				23DD58E019BEB86F00514172 /* TargetDock.h */,
+				23DD58E119BEB86F00514172 /* TargetDock.m */,
 				2360E2E919B7C0AA008732D1 /* Tile.h */,
 				2360E2EA19B7C0AA008732D1 /* Tile.m */,
 			);
@@ -347,6 +352,7 @@
 			files = (
 				B737893F1807617C0076A88C /* AppDelegate.m in Sources */,
 				2360E2EB19B7C0AA008732D1 /* Tile.m in Sources */,
+				23DD58E219BEB86F00514172 /* TargetDock.m in Sources */,
 				B7378994180767190076A88C /* MainScene.m in Sources */,
 				B73789871807631A0076A88C /* main.m in Sources */,
 			);
